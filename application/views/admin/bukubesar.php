@@ -98,7 +98,8 @@
 								<th>D/K</th>
 								<th>Saldo (Rp)</th>
 							</tr>
-							<?php $saldo = 0;$debitkas=0;$kreditkas=0;foreach($jurnalmerge as $jurnal):?>
+							<?php $saldo = 0;$debitkas=0;$kreditkas=0;
+							foreach($jurnalmerge as $jurnal):?>
 								<tr>
 									<td><?php echo date('d',strtotime($jurnal['tanggal']))?></td>
 									<td><?php echo $jurnal['keterangan']?></td>
@@ -137,7 +138,7 @@
 									}?>
 									</td>
 									<td></td>
-									<td><?php $total_kas = $saldo;echo number_format($total_kas);$neraca_kas = $total_kas;;
+									<td><?php $total_kas = $saldo;echo number_format($total_kas);$neraca_kas = $total_kas;
 									?></td>
 								</tr>
 							<?php endforeach;?>

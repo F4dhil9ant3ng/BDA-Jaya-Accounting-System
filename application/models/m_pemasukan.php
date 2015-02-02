@@ -68,7 +68,7 @@ class m_pemasukan extends CI_Model{
 			$sql = 'SELECT * FROM pemasukan WHERE kategori = ? AND MONTH(tanggal) = ? AND YEAR(tanggal) = ?';
 			$query = $this->db->query($sql,$params);
 		}		
-		if($query->num_rows<0){
+		if($query->num_rows()<=0){
 			return array();
 		} else {
 			return $query->result_array();

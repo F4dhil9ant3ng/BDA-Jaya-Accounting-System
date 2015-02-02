@@ -314,9 +314,26 @@ class dashboard extends base {
 			$params = array(date('d'),date('m'),date('Y'));
 			$bln_params = array(date('m'),date('Y'));
 		}
+		//bln_params_lalu
+		if($data['bulan'] == 1){
+			$data['bulanlalu'] = 12;
+			$data['tahunlalu'] = $data['tahun']-1;
+		}else{
+			$data['bulanlalu'] = $data['bulan']-1;
+			$data['tahunlalu'] = $data['tahun'];
+		}
+		$blnlalu_params = array($data['bulanlalu'],$data['tahunlalu']);//parameter untuk bulan lalu
+		// print_r($blnlalu_params);
+		//selesai mendapatkan modal
 		$data['total_gaji'] = $this->m_karyawan->total_gaji_bln_ini($bln_params);
+		//jumlah pemasukan dan pengeluaran bulan ini;
 		$data['pengeluaran_bln_ini'] = $this->m_pengeluaran->showPengeluaran_blnini($bln_params);//show pengeluaran bulan ini
 		$data['pemasukan_bln_ini'] = $this->m_pemasukan->showPemasukan_blnini($bln_params);//show pemasukan bulan ini;
+		$data['all_kategori_keluar'] = $this->m_pengeluaran->show_all_kategori_keluar();
+		$data['all_kategori_masuk'] = $this->m_pemasukan->show_all_kategori_masuk();
+		//jumlah pemasukan dan pengeluaran bulan sebelumnya
+		$data['pengeluaran_bln_lalu'] = $this->m_pengeluaran->showPengeluaran_blnini($blnlalu_params);;
+		$data['pemasukan_bln_lalu'] = $this->m_pengeluaran->showPengeluaran_blnini($blnlalu_params);;
 		$this->baseView('admin/jurnal',$data);
 	}
 
