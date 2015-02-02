@@ -278,7 +278,6 @@ class dashboard extends base {
 					'telp'=>$telepon,
 					'alamat'=>$alamat,
 					'username'=>$username,
-					'password'=>$password
 					);
 				$this->db->where('id_pegawai',$id);
 				$this->db->update('pegawai',$data);
