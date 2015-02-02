@@ -38,7 +38,7 @@
 		</li> -->
 		<hr/>
 		<li id="barang" class="">
-			<a href="<?php echo site_url('dashboard/barang')?>">
+			<a href="<?php echo site_url('gudang/barang')?>">
 				<span class="badge pull-right"><?php echo $this->db->count_all('barang');?></span>
 				Barang
 			</a>

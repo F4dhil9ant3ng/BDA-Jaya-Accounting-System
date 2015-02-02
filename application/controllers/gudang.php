@@ -80,6 +80,10 @@ class gudang extends base {
 		$data['title'] = 'Memproses....';
 		$post = $this->input->post();//get post request
 		$by = $this->session->userdata('id_pegawai');
+		//jika yang login admin
+		if($this->session->userdata('admin_logged_in')){
+			$by = null;
+		}
 		$noseri = $post['inputSeri'];
 		$nama = $post['inputNama'];
 		$kategori = $post['inputKategori'];
