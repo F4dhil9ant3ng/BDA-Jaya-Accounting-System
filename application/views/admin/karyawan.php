@@ -23,6 +23,7 @@
 							<label for="inputNama" class="col-lg-2 control-label">Nama</label>
 							<div class="col-lg-10">
 								<input name="addnama" value="<?php echo $karyawan['nama']?>" type="text" class="form-control" id="inputNama">
+								<br/>
 							</div>
 						</div>
 						<div class="form-group">
@@ -32,18 +33,21 @@
 									<option value="<?php echo $karyawan['bagian']?>"><?php echo $karyawan['bagian']?></option>
 									<option value="<?php if($karyawan['bagian']=='gudang'){$bagian = 'kasir';} else {$bagian = 'gudang';} echo $bagian;?>"><?php echo $bagian;?></option>
 								</select>
+								<br/>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="inputTelp" class="col-lg-2 control-label">Telp</label>
 							<div class="col-lg-10">
 								<input name="addtelepon" value="<?php echo $karyawan['telp']?>" type="phone" class="form-control" id="inputTelp">
+								<br/>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="inputAlamat" class="col-lg-2 control-label">Alamat</label>
 							<div class="col-lg-10">
 								<textarea name="addalamat" class="form-control" id="inputAlamat"><?php echo $karyawan['alamat']?></textarea>
+								<br/>
 							</div>
 						</div>
 						<div class="form-group">
@@ -51,9 +55,20 @@
 							<div class="col-lg-10">
 								<input name="addusername" value="<?php echo $karyawan['username']?>" type="text" class="form-control" id="inputUsername">
 								<br/>
+							</div>							
+						</div>
+						<br/>
+						<div class="form-group">
+							<label for="inputUsername" class="col-lg-2 control-label">Ubah Password</label>
+							<div class="col-lg-10">
+								<p>Kosongkan jika tidak ingin ubah password</p>
+								<input name="addpassword" min="5" type="password" class="form-control" id="inputPassword">
+								<input name="recentpassword" min="5" type="hidden" value="<?php echo $karyawan['password']?>">
+								<br/>
 								<button class="btn btn-primary" type="submit">Update Data</button>
 							</div>							
 						</div>
+
 					</form>
 					<hr/><br/><br/>
 					<?php } ?>				

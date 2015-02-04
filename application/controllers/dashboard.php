@@ -272,12 +272,19 @@ class dashboard extends base {
 				$telepon = $this->input->post('addtelepon');
 				$alamat = $this->input->post('addalamat');
 				$username = $this->input->post('addusername');
+				$password = $this->input->post('addpassword');
+				if(empty($password)){
+					$password = $this->input->post('recentpassword');	
+				}else{
+					$password = md5($password);
+				}
 				$data = array(
 					'nama'=>$nama,
 					'bagian'=>$bagian,
 					'telp'=>$telepon,
 					'alamat'=>$alamat,
 					'username'=>$username,
+					'password'=>$password,
 					);
 				$this->db->where('id_pegawai',$id);
 				$this->db->update('pegawai',$data);
