@@ -55,9 +55,15 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<label for="inputKategori" class="col-lg-2 control-label"><small>Alamat dan Kontak</small></label>
+										<label for="inputKategori" class="col-lg-2 control-label"><small>Alamat</small></label>
 										<div class="col-lg-10">
 											<textarea name="inputAlamat" type="text" class="input-sm form-control" id="inputKategori" placeholder="Alamat dan kontak pemasok"></textarea>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="inputKategori" class="col-lg-2 control-label"><small>Kontak</small></label>
+										<div class="col-lg-10">
+											<textarea name="inputKontak" type="text" class="input-sm form-control" id="inputKategori" placeholder="Alamat dan kontak pemasok"></textarea>
 										</div>
 									</div>
 									<div class="form-group">
