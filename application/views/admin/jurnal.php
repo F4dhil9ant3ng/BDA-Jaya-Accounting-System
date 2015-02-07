@@ -151,12 +151,14 @@ function sort_array_by_value($key, &$array) {
 											$tgl = 30;
 										} 
 										//count total gaji
-										if($total_gaji != 0):
-											$totalgaji = $total_gaji * 30000;
+										if($total_gaji != 0){//sudah gajian
+										$totalgaji = $total_gaji * 30000;
+										}else{
+											$totalgaji = 0;
+										}
 										$kreditkas = $kreditkas + $total_gaji;
 										$total_kas = $total_gaji;
 										$neraca_kas = $saldo-$totalgaji;
-										endif;
 										//cek lebih besar kredit atau debit
 										if($kreditkas > $debitkas){
 											$kas = $kreditkas - $debitkas;

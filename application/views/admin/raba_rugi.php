@@ -146,11 +146,12 @@
 		</h4>
 		<table class="table">
 			<?php 
+			$modal= 0;
 			foreach($this->session->userdata('neraca') as $n):
 			if($n['tipe'] == 'Modal'){ ?>
 			<tr>				
 				<td><?php echo $n['tipe']?></td>
-				<td><?php echo 'Rp '.number_format($n['value']).',-';$modal = $n['value'];?></td>
+				<td><?php echo 'Rp '.number_format($n['value']).',-';$modal = $modal+$n['value'];?></td>
 			</tr>
 			<?php } endforeach;?>
 			<tr>
@@ -164,12 +165,12 @@
 						echo 'Rp '.number_format($modal = $modal+$labrug).',-';
 						}else{
 							echo 'Rp '.number_format($modal = $modal-$labrug).',-';
-							}?>					
+						}?>					
 				</strong></td>
 			</tr>
 		</table>
 		<h5 style="float:right">
-		Model Akhir Rp <?php echo 'Rp '.number_format($modal).',-'?>
+		Modal Akhir Rp <?php echo 'Rp '.number_format($modal).',-'?>
 		</h5>		
 	</center>
 

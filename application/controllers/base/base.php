@@ -49,5 +49,9 @@ class base extends CI_Controller {
 		}
 	}
 	//admin function
+	//mencari modal
+	public function get_modal(){
+
+	}
 	
 }

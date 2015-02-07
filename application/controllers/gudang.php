@@ -82,7 +82,7 @@ class gudang extends base {
 		$by = $this->session->userdata('id_pegawai');
 		//jika yang login admin
 		if($this->session->userdata('admin_logged_in')){
-			$by = null;
+			$by = 1;
 		}
 		$noseri = $post['inputSeri'];
 		$nama = $post['inputNama'];
@@ -380,6 +380,7 @@ public function proses_tambah_stok(){
 		$kembali = $this->input->post('inputKembali');
 		$pemasok = $this->input->post('inputPemasok');
 		$oleh = $this->session->userdata('id_pegawai');
+		if(empty($oleh)){$oleh=1;}
 		$data= array(
 			'rp'=>$totalBayar,
 			'status'=>$status,
@@ -394,6 +395,8 @@ public function proses_tambah_stok(){
 			$query = $this->db->get('pasokan');
 			$pasokan = $query->row_array();
 			$id_pasokan = $pasokan['id_pasokan'];//get lattest id pasokan [WORKED]
+			$id_pegawai = $this->session->userdata('id_pegawai');
+			if(empty($id_pegawai)){$id_pegawai=null;}
 			//mememasukan item pasokan
 			foreach($this->cart->contents() as $i):
 				$barang = $this->m_barang->showBarangByKode($i['id']);//ambil data barang by kode
@@ -422,7 +425,7 @@ public function proses_tambah_stok(){
 				if($this->db->insert('pengeluaran',$pengeluaran)) {
 					//membuat laporan
 					$log = array(
-						'id_pegawai'=>$this->session->userdata('id_pegawai'),
+						'id_pegawai'=>$id_pegawai,
 						'id_pemasok'=>$pemasok,
 						'activity'=>'menambah pasokan dari pemasok : '.$pemasok.' | dengan id pasokan : '.$id_pasokan,
 						);

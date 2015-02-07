@@ -96,6 +96,8 @@ class kasir extends base {
 			$query = $this->db->get('transaksi');
 			$transaksi = $query->row_array();
 			$id_transaksi = $transaksi['id_transaksi'];//get lattest id transaksi [WORKED]
+			$id_pegawai = $this->session->userdata('id_pegawai');
+			if(empty($id_pegawai)){$id_pegawai=null;}
 			//memasukan item transaksi
 			foreach($this->cart->contents() as $i):
 				$barang = $this->m_barang->showBarangByKode($i['id']);
@@ -122,7 +124,7 @@ class kasir extends base {
 				if($this->db->insert('pemasukan',$pemasukan)) {
 				//membuat log untuk kasir
 					$log = array(
-						'id_pegawai'=>$this->session->userdata('id_pegawai'),
+						'id_pegawai'=>$id_pegawai,
 						'id_transaksi'=>$id_transaksi,
 						'catatan'=>'membuat transaksi baru dengan id : '.$id_transaksi,
 						);

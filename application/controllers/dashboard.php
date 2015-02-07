@@ -332,6 +332,7 @@ class dashboard extends base {
 		$blnlalu_params = array($data['bulanlalu'],$data['tahunlalu']);//parameter untuk bulan lalu
 		// print_r($blnlalu_params);
 		//selesai mendapatkan modal
+		$data['modal'] = $this->get_modal();
 		$data['total_gaji'] = $this->m_karyawan->total_gaji_bln_ini($bln_params);
 		//jumlah pemasukan dan pengeluaran bulan ini;
 		$data['pengeluaran_bln_ini'] = $this->m_pengeluaran->showPengeluaran_blnini($bln_params);//show pengeluaran bulan ini
