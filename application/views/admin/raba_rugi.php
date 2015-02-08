@@ -148,12 +148,18 @@
 			<?php 
 			$modal= 0;
 			foreach($this->session->userdata('neraca') as $n):
-			if($n['tipe'] == 'Modal'){ ?>
+			if($n['tipe'] == 'Modal' && $n['value']!=0){ ?>
 			<tr>				
 				<td><?php echo $n['tipe']?></td>
 				<td><?php echo 'Rp '.number_format($n['value']).',-';$modal = $modal+$n['value'];?></td>
 			</tr>
-			<?php } endforeach;?>
+			<?php }else if($n['tipe'] == 'Prive' && $n['value']!=0){?>
+			<tr>				
+				<td><?php echo $n['tipe']?></td>
+				<td><?php echo 'Rp '.number_format($n['value']).',-';$modal = $modal-$n['value'];?></td>
+			</tr>
+			<?php } 
+			endforeach;?>
 			<tr>
 				<td><?php echo $status;?></td>
 				<td>Rp <?php echo number_format($labrug);?>,-</td>

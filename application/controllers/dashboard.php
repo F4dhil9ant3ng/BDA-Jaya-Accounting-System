@@ -323,16 +323,16 @@ class dashboard extends base {
 		}
 		//bln_params_lalu
 		if($data['bulan'] == 1){
-			$data['bulanlalu'] = 12;
-			$data['tahunlalu'] = $data['tahun']-1;
+			$bulanlalu = 12;
+			$tahunlalu = $data['tahun']-1;
 		}else{
-			$data['bulanlalu'] = $data['bulan']-1;
-			$data['tahunlalu'] = $data['tahun'];
+			$bulanlalu = $data['bulan']-1;
+			$tahunlalu = $data['tahun'];
 		}
-		$blnlalu_params = array($data['bulanlalu'],$data['tahunlalu']);//parameter untuk bulan lalu
+		$blnlalu_params = array($bulanlalu,$tahunlalu);//parameter untuk bulan lalu
 		// print_r($blnlalu_params);
 		//selesai mendapatkan modal
-		$data['modal'] = $this->get_modal();
+		$data['modallalu'] = $this->get_modal($bulanlalu,$tahunlalu);
 		$data['total_gaji'] = $this->m_karyawan->total_gaji_bln_ini($bln_params);
 		//jumlah pemasukan dan pengeluaran bulan ini;
 		$data['pengeluaran_bln_ini'] = $this->m_pengeluaran->showPengeluaran_blnini($bln_params);//show pengeluaran bulan ini

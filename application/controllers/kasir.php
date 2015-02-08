@@ -97,7 +97,7 @@ class kasir extends base {
 			$transaksi = $query->row_array();
 			$id_transaksi = $transaksi['id_transaksi'];//get lattest id transaksi [WORKED]
 			$id_pegawai = $this->session->userdata('id_pegawai');
-			if(empty($id_pegawai)){$id_pegawai=null;}
+			if(empty($id_pegawai)){$id_pegawai=2;}
 			//memasukan item transaksi
 			foreach($this->cart->contents() as $i):
 				$barang = $this->m_barang->showBarangByKode($i['id']);
