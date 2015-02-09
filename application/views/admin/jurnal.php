@@ -102,6 +102,7 @@ function sort_array_by_value($key, &$array) {
 								<?php $jurnalmerge = array_merge($pemasukan_bln_ini,$pengeluaran_bln_ini);
 								sort_array_by_value('tanggal',$jurnalmerge);
 								?>
+								<?php if(!empty($this->session->userdata['modallalu'])):?>
 								<tr>
 									<td>01</td>
 									<td>Kas<br/><span style="padding-left:2em"></span>Modal</td>
@@ -113,6 +114,7 @@ function sort_array_by_value($key, &$array) {
 									$totaldebit = $totaldebit + $this->session->userdata['modallalu'];
 									?>
 								</tr>
+							<?php endif;?>
 								<?php foreach($jurnalmerge as $jurnal):?>								
 									<tr>
 										<td><?php echo date('d',strtotime($jurnal['tanggal']));?></td>

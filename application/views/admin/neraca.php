@@ -93,7 +93,7 @@
 						<?php
 						if($n['pos'] == 'debit'){
 							echo number_format($n['value']);
-							$totaldebet = $totaldebet + $n['value'];
+							$totaldebet = $totaldebet + $n['value'] ;
 						}
 						?>
 					</td>
@@ -106,9 +106,10 @@
 						?>
 					</td>
 				</tr>
-			<?php endforeach;?>
+			<?php endforeach;$totaldebet = $totaldebet+$this->session->userdata('modallalu');?>
 			<tr>
 				<td></td>
+				<?php echo $this->session->userdata('modallalu');?>
 				<td><strong><?php echo number_format($totaldebet);?></strong></td>
 				<td><strong><?php echo number_format($totalkredit);?></strong></td>
 			</tr>

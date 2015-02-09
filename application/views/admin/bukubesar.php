@@ -98,8 +98,22 @@
 								<th>D/K</th>
 								<th>Saldo (Rp)</th>
 							</tr>
-							<?php $saldo = 0;$debitkas=0;$kreditkas=0;
-							foreach($jurnalmerge as $jurnal):?>
+							<?php $saldo = 0;$debitkas=0;$kreditkas=0;?>
+							<?php if(!empty($modallalu)){ 
+								$saldo = $saldo + $modallalu;
+								$debitkas = $debitkas + $modallalu;
+								?>
+								<tr>
+									<td>01</td>
+									<td>Perubahan Modal</td>
+									<td></td>
+									<td><?php echo number_format($modallalu);?></td>
+									<td></td>
+									<td></td>
+									<td><?php echo number_format($saldo);?></td>
+								</tr>
+							<?php }?>
+							<?php foreach($jurnalmerge as $jurnal):?>
 								<tr>
 									<td><?php echo date('d',strtotime($jurnal['tanggal']))?></td>
 									<td><?php echo $jurnal['keterangan']?></td>
@@ -281,10 +295,23 @@
 									<th>D/K</th>
 									<th>Saldo (Rp)</th>
 								</tr>
+								<?php $total = 0;
+								$total = $total+$modallalu;
+								if($katmasuk['id_kat_masuk']==4){
+									echo '<tr>';
+									echo '<td>01</td>';
+									echo '<td>Sisa Modal</td>';
+									echo '<td></td>';
+									echo '<td></td>';
+									echo '<td>'.number_format($modallalu).'</td>';
+									echo '<td></td>';
+									echo '<td>'.number_format($total).'</td>';
+									echo '</tr>';
+								}?>
 								<?php 
 								$params = array($katmasuk['id_kat_masuk'],$bulan,$tahun);
 								$akun = $this->m_pemasukan->show_masuk_bukubesar($params);								
-								$total = 0;
+								
 								foreach($akun as $a):
 								?>
 								<tr>

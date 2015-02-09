@@ -362,6 +362,16 @@ class dashboard extends base {
 			$params = array(date('d'),date('m'),date('Y'));
 			$bln_params = array(date('m'),date('Y'));
 		}
+		//bln_params_lalu
+		if($data['bulan'] == 1){
+			$bulanlalu = 12;
+			$tahunlalu = $data['tahun']-1;
+		}else{
+			$bulanlalu = $data['bulan']-1;
+			$tahunlalu = $data['tahun'];
+		}
+		$blnlalu_params = array($bulanlalu,$tahunlalu);//parameter untuk bulan lalu
+		$data['modallalu'] = $this->get_modal($bulanlalu,$tahunlalu);
 		$data['total_gaji'] = $this->m_karyawan->total_gaji_bln_ini($bln_params);
 		$data['pengeluaran_bln_ini'] = $this->m_pengeluaran->showPengeluaran_blnini($bln_params);//show pengeluaran bulan ini
 		$data['pemasukan_bln_ini'] = $this->m_pemasukan->showPemasukan_blnini($bln_params);//show pemasukan bulan ini;
