@@ -24,7 +24,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">Sistem Akuntansi BDA-JAYA</a>
+			<a class="navbar-brand" href="#">Sistem Keuangan BDA-JAYA</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->

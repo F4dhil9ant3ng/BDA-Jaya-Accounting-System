@@ -19,9 +19,7 @@
 	</div>
 </div>
 <div class="container">
-	<?php $this->load->view('admin/menu')?>
-	<?php //print_r($this->session->userdata('neraca'));?>
-	<div class="col-md-10">
+	<div class="col-md-12">
 		<center>
 			<?php 
 			switch ($_GET['bln']) {
@@ -71,7 +69,7 @@
 
 		</center>
 		<br/>
-		<h5>Pendapatan</h5>
+		<h3>Pendapatan</h3>
 		<table class="table">
 			<?php 
 			//mencari nilai pendapatan
@@ -103,7 +101,7 @@
 				</tr>
 			</table>
 			<br/>
-			<h5>Beban</h5>
+			<h3>Beban</h3>
 			<table class="table">
 				<?php 
 				foreach ($this->session->userdata('neraca') as $data) {
@@ -175,14 +173,10 @@
 					</strong></td>
 				</tr>
 			</table>
-			<h5 style="float:right">
+			<h3 style="float:right">
 				Modal Akhir Rp <?php echo 'Rp '.number_format($modal).',-'?>
-			</h5>		
+			</h3>		
 		</center>
 
-	</div>
-	<center>
-		<a class="btn btn-primary btn-lg" href="<?php echo site_url('dashboard/cetakRabaRugi?bln='.$bulan.'&thn='.$tahun);?>">Cetak</a>
-	</center>
-	
+	</div>	
 </div>

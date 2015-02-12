@@ -397,7 +397,20 @@ class dashboard extends base {
 		$data['script'] = "<script> $(document).ready(function(){ document.getElementById('neraca').className = 'active';});</script>";
 		$this->baseView('admin/raba_rugi',$data);	
 	}
-
+	//cetak raba rugi
+	public function cetakRabaRugi(){
+		$data['bulan'] = $this->input->get('bln');
+		$data['tahun'] = $this->input->get('thn');
+		$data['title'] = 'Cetak Laporan Data Rugi | ';
+		$data['script'] = "<script> $(document).ready(function(){ document.getElementById('neraca').className = 'active';});</script>";
+		$this->load->view('admin/cetak_raba_rugi',$data);		
+		$html = $this->output->get_output();
+			//echo $html;
+		$this->load->library('dompdf_gen');
+		$this->dompdf->load_html($html);
+		$this->dompdf->render();
+		$this->dompdf->stream('Laporan Data Rugi'.".pdf");//pdf file name	
+	}
 	//laporan perubahan modal
 	public function perubahan_modal(){
 		$data['title'] = 'Laporan Perubahan Modal | ';
