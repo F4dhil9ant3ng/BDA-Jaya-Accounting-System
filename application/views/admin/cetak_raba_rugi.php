@@ -1,23 +1,3 @@
-<script type="text/javascript">
-	$(function(){
-		$('#selectbln').val('<?php echo $bulan;?>');
-		$('#selectthn').val('<?php echo $tahun;?>');
-	});	
-	function addPengeluaran(){
-		$('#addpengeluaran').toggle('fast');
-	}
-	function addPemasukan(){
-		$('#addpemasukan').toggle('fast');
-	}
-</script>
-<div class="container">
-	<div class="col-md-12">
-		<ol class="breadcrumb">
-			<li><a href="#">Admin</a></li>
-			<li class="active">Penjurnalan</li>
-		</ol>
-	</div>
-</div>
 <div class="container">
 	<div class="col-md-12">
 		<center>
@@ -100,7 +80,7 @@
 					?></strong></td>
 				</tr>
 			</table>
-			<br/>
+			<br/><br/><br/>
 			<h3>Beban</h3>
 			<table class="table">
 				<?php 
@@ -120,8 +100,8 @@
 				<td><strong>Rp <?php echo number_format($tot_beban);?>,-</strong></td>
 			</tr>
 		</table>
-		<br/>
-		<h5 style="float:right">
+		<br/><br/><br/>
+		<h2 style="float:right">
 			<?php
 			$labrug = $tot_pendapatan - $tot_beban;
 		//cek rugi ataukah laba
@@ -134,7 +114,7 @@
 				echo 'Rugi Rp '.number_format($labrug).',-';
 			}
 			?>
-		</h5>
+		</h2>
 		<br><br><br>
 		<center>
 			<h4>
@@ -142,41 +122,43 @@
 				"BDA-JAYA" <br/>
 				Bulan <?php echo $bln;?> Tahun <?php echo $_GET['thn'];?>
 			</h4>
-			<table class="table">
-				<?php 
-				$modal= 0;
-				foreach($this->session->userdata('neraca') as $n):
-					if($n['tipe'] == 'Modal' && $n['value']!=0){ ?>
-				<tr>				
-					<td><?php echo $n['tipe']?></td>
-					<td><?php echo 'Rp '.number_format($n['value']).',-';$modal = $modal+$n['value'];?></td>
-				</tr>
-				<?php }else if($n['tipe'] == 'Prive' && $n['value']!=0){?>
-				<tr>				
-					<td><?php echo $n['tipe']?></td>
-					<td><?php echo 'Rp '.number_format($n['value']).',-';$modal = $modal-$n['value'];?></td>
-				</tr>
-				<?php } 
-				endforeach;?>
-				<tr>
-					<td><?php echo $status;?></td>
-					<td>Rp <?php echo number_format($labrug);?>,-</td>
-				</tr>
-				<tr style="display:none">
-					<td><strong>Model Akhir</strong></td>
-					<td><strong>
-						<?php if($status == 'laba'){
-							echo 'Rp '.number_format($modal = $modal+$labrug).',-';
-						}else{
-							echo 'Rp '.number_format($modal = $modal-$labrug).',-';
-						}?>					
-					</strong></td>
-				</tr>
-			</table>
-			<h3 style="float:right">
-				Modal Akhir Rp <?php echo 'Rp '.number_format($modal).',-'?>
-			</h3>		
+
 		</center>
+		<table class="table">
+			<?php 
+			$modal= 0;
+			foreach($this->session->userdata('neraca') as $n):
+				if($n['tipe'] == 'Modal' && $n['value']!=0){ ?>
+			<tr>				
+				<td><?php echo $n['tipe']?></td>
+				<td><?php echo 'Rp '.number_format($n['value']).',-';$modal = $modal+$n['value'];?></td>
+			</tr>
+			<?php }else if($n['tipe'] == 'Prive' && $n['value']!=0){?>
+			<tr>				
+				<td><?php echo $n['tipe']?></td>
+				<td><?php echo 'Rp '.number_format($n['value']).',-';$modal = $modal-$n['value'];?></td>
+			</tr>
+			<?php } 
+			endforeach;?>
+			<tr>
+				<td><?php echo $status;?></td>
+				<td>Rp <?php echo number_format($labrug);?>,-</td>
+			</tr>
+			<tr style="display:none">
+				<td><strong>Model Akhir</strong></td>
+				<td><strong>
+					<?php if($status == 'laba'){
+						echo 'Rp '.number_format($modal = $modal+$labrug).',-';
+					}else{
+						echo 'Rp '.number_format($modal = $modal-$labrug).',-';
+					}?>					
+				</strong></td>
+			</tr>
+		</table>
+		<br/><br/><br/>
+		<h2 style="float:right">
+			Modal Akhir Rp <?php echo 'Rp '.number_format($modal).',-'?>
+		</h2>
 
 	</div>	
 </div>

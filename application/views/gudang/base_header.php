@@ -53,7 +53,7 @@
 					</ul>
 				</li>
 			</ul>
-			<? } else if(!empty($this->session->userdata('admin_logged_in'))){ ?>
+			<?php } else if(!empty($this->session->userdata('admin_logged_in'))){ ?>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>Admin : </strong><?php echo $this->session->userdata('nama');?> <b class="caret"></b></a>

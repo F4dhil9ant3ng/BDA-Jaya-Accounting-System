@@ -64,7 +64,7 @@
 			}
 			?>
 			<h4>
-				Laporan Raba Lugi <br/>
+				Laporan Laba Rubi <br/>
 				"BDA-JAYA" <br/>
 				Bulan <?php echo $bln;?> Tahun <?php echo $_GET['thn'];?>
 			</h4>

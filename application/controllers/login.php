@@ -9,7 +9,7 @@ class login extends base {
 	}	
 	///////////////////////////// PROCESS
 	public function pegawaiLogin(){
-		$this->load->library('form_validation');//form validation untuk siswa
+		$this->load->library('form_validation');//form validation untuk pegawai
 		//validasi 
 		$this->form_validation->set_rules('input-username', 'username', 'required|trim|xss_clean|callback_validate_credentials');
 		$this->form_validation->set_rules('input-password', 'Password', 'required|md5|trim|xss_clean');
