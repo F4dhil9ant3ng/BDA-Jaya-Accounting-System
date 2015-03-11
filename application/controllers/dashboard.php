@@ -41,7 +41,7 @@ class dashboard extends base {
 		$data['pengeluaran_bln_ini'] = $this->m_pengeluaran->showPengeluaran_blnini($bln_params);//show pengeluaran bulan ini
 		$data['pemasukan_bln_ini'] = $this->m_pemasukan->showPemasukan_blnini($bln_params);//show pemasukan bulan ini;
 		$this->baseView('admin/bukukas',$data);
-	}	
+	}
 	//management kategori masuk keluar
 	public function kategori_kas(){
 		$data['title'] = "Manajemen Kategori Pemasukan dan Pengeluaran";
@@ -127,10 +127,10 @@ class dashboard extends base {
 		$config['per_page']= 20;
 		$config['num_link']=2;
 		$config['page_query_string'] = TRUE;
-		$this->pagination->initialize($config); 
-		$data['page'] = $this->pagination->create_links();		
+		$this->pagination->initialize($config);
+		$data['page'] = $this->pagination->create_links();
 		if(isset($_GET['per_page'])) {
-			if($_GET['per_page'] == '') { 
+			if($_GET['per_page'] == '') {
 				$uri = 0;
 			} else {
 				$uri = $_GET['per_page'];
@@ -141,14 +141,14 @@ class dashboard extends base {
 		if(!empty($this->input->get('q'))) { //jika melakukan pencarian
 			$keyword = $this->input->get('q');//keyword pencarian
 			$config['base_url'] = site_url('gudang/barang?p=on&q='.$keyword);
-			$this->db->where('id_barang',$keyword);			
-			$config['total_rows'] = $this->db->count_all('barang');			
+			$this->db->where('id_barang',$keyword);
+			$config['total_rows'] = $this->db->count_all('barang');
 			$data['barang'] = $this->m_barang->searchBarang($config['per_page'],$uri,$keyword);
 		} else { //jika tidak melakukan pencarian
 			$config['base_url'] = site_url('gudang/barang?p=on');
-			$config['total_rows'] = $this->db->count_all('barang');			
+			$config['total_rows'] = $this->db->count_all('barang');
 			$data['barang'] = $this->m_barang->semuaBarang($config['per_page'],$uri);
-		}		
+		}
 		$this->baseView('admin/barang',$data);
 	}
 	//semua kategori barang
@@ -165,7 +165,6 @@ class dashboard extends base {
 		$data['pemasok'] = $this->m_gudang->semuaPemasok();
 		$this->baseView('admin/pemasok',$data);
 	}
-
 	//////////////////////////////////////////////
 	///////////// ALL ABOUT KASIR ////////////////
 	//////////////////////////////////////////////
@@ -177,10 +176,10 @@ class dashboard extends base {
 		$config['per_page']= 20;
 		$config['num_link']=2;
 		$config['page_query_string'] = TRUE;
-		$this->pagination->initialize($config); 
-		$data['page'] = $this->pagination->create_links();		
+		$this->pagination->initialize($config);
+		$data['page'] = $this->pagination->create_links();
 		if(isset($_GET['per_page'])) {
-			if($_GET['per_page'] == '') { 
+			if($_GET['per_page'] == '') {
 				$uri = 0;
 			} else {
 				$uri = $_GET['per_page'];
@@ -195,13 +194,13 @@ class dashboard extends base {
 					$config['base_url'] = site_url('kasir/transaksi?p=on&status=lunas');
 					$this->db->where('status','lunas');
 					$config['total_rows'] = $this->db->count_all('transaksi');
-					$data['transaksi'] = $this->m_kasir->showTransaksiByStatus($config['per_page'],$uri,'lunas');	
+					$data['transaksi'] = $this->m_kasir->showTransaksiByStatus($config['per_page'],$uri,'lunas');
 					break;
 
 					case 'piutang':
 					$config['base_url'] = site_url('kasir/transaksi?p=on&status=piutang');
 					$this->db->where('status','piutang');
-					$config['total_rows'] = $this->db->count_all('transaksi');	
+					$config['total_rows'] = $this->db->count_all('transaksi');
 					$data['transaksi'] = $this->m_kasir->showTransaksiByStatus($config['per_page'],$uri,'piutang');
 					break;
 
@@ -215,17 +214,17 @@ class dashboard extends base {
 					$keyword = $this->input->get('q');//keyword
 					$config['base_url'] = site_url('kasir/transaksi?p=on&q='.$keyword);
 					$this->db->where('id_transaksi',$keyword);
-					$config['total_rows'] = $this->db->count_all('transaksi');	
+					$config['total_rows'] = $this->db->count_all('transaksi');
 					$data['transaksi'] = $this->m_kasir->showTransaksiByKeyword($config['per_page'],$uri,$keyword);
 					break;
 				}
-			}		
-			
-		} else { //menampilkan semua transaksi		
+			}
+
+		} else { //menampilkan semua transaksi
 			$config['base_url'] = site_url('kasir/transaksi?p=on');
-			$config['total_rows'] = $this->db->count_all('transaksi');			
+			$config['total_rows'] = $this->db->count_all('transaksi');
 			$data['transaksi'] = $this->m_kasir->showTransaksi($config['per_page'],$uri);
-		}		
+		}
 		$this->baseView('admin/transaksi',$data);
 	}
 	//////////////////////////////////////////////
@@ -274,7 +273,7 @@ class dashboard extends base {
 				$username = $this->input->post('addusername');
 				$password = $this->input->post('addpassword');
 				if(empty($password)){
-					$password = $this->input->post('recentpassword');	
+					$password = $this->input->post('recentpassword');
 				}else{
 					$password = md5($password);
 				}
@@ -293,7 +292,7 @@ class dashboard extends base {
 				default:
 				echo 'menu yang anda pilih salah';
 				break;
-			}			
+			}
 		} else {
 			$data['pegawai'] = $this->m_admin->show_all_pegawai();
 			$this->baseView('admin/karyawan',$data);
@@ -395,21 +394,21 @@ class dashboard extends base {
 		$data['tahun'] = $this->input->get('thn');
 		$data['title'] = 'Laporan Data Rugi | ';
 		$data['script'] = "<script> $(document).ready(function(){ document.getElementById('neraca').className = 'active';});</script>";
-		$this->baseView('admin/raba_rugi',$data);	
+		$this->baseView('admin/raba_rugi',$data);
 	}
 	//cetak raba rugi
 	public function cetakRabaRugi(){
 		$data['bulan'] = $this->input->get('bln');
 		$data['tahun'] = $this->input->get('thn');
-		$data['title'] = 'Cetak Laporan Data Rugi | ';
+		$data['title'] = 'Cetak Laporan Laba Rugi | ';
 		$data['script'] = "<script> $(document).ready(function(){ document.getElementById('neraca').className = 'active';});</script>";
-		$this->load->view('admin/cetak_raba_rugi',$data);		
+		$this->load->view('admin/cetak_raba_rugi',$data);
 		$html = $this->output->get_output();
 			//echo $html;
 		$this->load->library('dompdf_gen');
 		$this->dompdf->load_html($html);
 		$this->dompdf->render();
-		$this->dompdf->stream('Laporan Data Rugi'.".pdf");//pdf file name	
+		$this->dompdf->stream('Laporan Data Rugi'.".pdf");//pdf file name
 	}
 	//laporan perubahan modal
 	public function perubahan_modal(){
@@ -418,4 +417,3 @@ class dashboard extends base {
 		$this->baseView('admin/perubahan_modal',$data);
 	}
 }
-
